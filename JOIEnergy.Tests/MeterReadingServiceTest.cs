@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using JOIEnergy.Domain;
 using JOIEnergy.Services;
-using JOIEnergy.Domain;
+using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace JOIEnergy.Tests
@@ -23,7 +23,8 @@ namespace JOIEnergy.Tests
         }
 
         [Fact]
-        public void GivenMeterIdThatDoesNotExistShouldReturnNull() {
+        public void GivenMeterIdThatDoesNotExistShouldReturnNull()
+        {
             Assert.Empty(meterReadingService.GetReadings("unknown-id"));
         }
 

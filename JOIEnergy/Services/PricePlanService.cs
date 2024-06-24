@@ -1,7 +1,7 @@
-﻿using System;
+﻿using JOIEnergy.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using JOIEnergy.Domain;
 
 namespace JOIEnergy.Services
 {
@@ -36,7 +36,7 @@ namespace JOIEnergy.Services
         {
             var average = calculateAverageReading(electricityReadings);
             var timeElapsed = calculateTimeElapsed(electricityReadings);
-            var averagedCost = average/timeElapsed;
+            var averagedCost = average / timeElapsed;
             return Math.Round(averagedCost * pricePlan.UnitRate, 3);
         }
 

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using JOIEnergy.Domain;
+﻿using JOIEnergy.Domain;
 using JOIEnergy.Enums;
+using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace JOIEnergy.Tests
@@ -17,7 +17,7 @@ namespace JOIEnergy.Tests
                 EnergySupplier = Supplier.TheGreenEco,
                 UnitRate = 20m,
                 PeakTimeMultiplier = new List<PeakTimeMultiplier> {
-                    new PeakTimeMultiplier { 
+                    new PeakTimeMultiplier {
                         DayOfWeek = DayOfWeek.Saturday,
                         Multiplier = 2m
                     },
@@ -30,12 +30,14 @@ namespace JOIEnergy.Tests
         }
 
         [Fact]
-        public void TestGetEnergySupplier() {
+        public void TestGetEnergySupplier()
+        {
             Assert.Equal(Supplier.TheGreenEco, _pricePlan.EnergySupplier);
         }
 
         [Fact]
-        public void TestGetBasePrice() {
+        public void TestGetBasePrice()
+        {
             Assert.Equal(20m, _pricePlan.GetPrice(new DateTime(2018, 1, 2)));
         }
 

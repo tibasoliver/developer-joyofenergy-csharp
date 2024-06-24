@@ -1,6 +1,6 @@
-﻿using System;
+﻿using JOIEnergy.Domain;
+using System;
 using System.Collections.Generic;
-using JOIEnergy.Domain;
 
 namespace JOIEnergy.Services
 {
@@ -12,15 +12,19 @@ namespace JOIEnergy.Services
             MeterAssociatedReadings = meterAssociatedReadings;
         }
 
-        public List<ElectricityReading> GetReadings(string smartMeterId) {
-            if (MeterAssociatedReadings.ContainsKey(smartMeterId)) {
+        public List<ElectricityReading> GetReadings(string smartMeterId)
+        {
+            if (MeterAssociatedReadings.ContainsKey(smartMeterId))
+            {
                 return MeterAssociatedReadings[smartMeterId];
             }
             return new List<ElectricityReading>();
         }
 
-        public void StoreReadings(string smartMeterId, List<ElectricityReading> electricityReadings) {
-            if (!MeterAssociatedReadings.ContainsKey(smartMeterId)) {
+        public void StoreReadings(string smartMeterId, List<ElectricityReading> electricityReadings)
+        {
+            if (!MeterAssociatedReadings.ContainsKey(smartMeterId))
+            {
                 MeterAssociatedReadings.Add(smartMeterId, new List<ElectricityReading>());
             }
 

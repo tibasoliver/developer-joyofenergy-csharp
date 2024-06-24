@@ -1,7 +1,7 @@
-﻿using System;
+﻿using JOIEnergy.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using JOIEnergy.Enums;
 
 namespace JOIEnergy.Domain
 {
@@ -10,14 +10,18 @@ namespace JOIEnergy.Domain
         public string PlanName { get; set; }
         public Supplier EnergySupplier { get; set; }
         public decimal UnitRate { get; set; }
-        public IList<PeakTimeMultiplier> PeakTimeMultiplier { get; set;}
+        public IList<PeakTimeMultiplier> PeakTimeMultiplier { get; set; }
 
-        public decimal GetPrice(DateTime datetime) {
+        public decimal GetPrice(DateTime datetime)
+        {
             var multiplier = PeakTimeMultiplier.FirstOrDefault(m => m.DayOfWeek == datetime.DayOfWeek);
 
-            if (multiplier?.Multiplier != null) {
+            if (multiplier?.Multiplier != null)
+            {
                 return multiplier.Multiplier * UnitRate;
-            } else {
+            }
+            else
+            {
                 return UnitRate;
             }
         }

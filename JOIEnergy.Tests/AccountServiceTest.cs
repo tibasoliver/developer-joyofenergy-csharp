@@ -1,7 +1,7 @@
-using System;
-using System.Collections.Generic;
 using JOIEnergy.Enums;
 using JOIEnergy.Services;
+using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace JOIEnergy.Tests
@@ -27,7 +27,7 @@ namespace JOIEnergy.Tests
             var result = accountService.GetPricePlanIdForSmartMeterId(SMART_METER_ID);
             Assert.Equal(PRICE_PLAN_ID, result);
         }
-        
+
         [Fact]
         public void GivenAnUnknownSmartMeterIdReturnsNull()
         {

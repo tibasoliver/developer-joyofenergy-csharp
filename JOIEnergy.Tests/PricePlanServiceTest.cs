@@ -1,9 +1,9 @@
-﻿using System;
+﻿using JOIEnergy.Domain;
 using JOIEnergy.Services;
-using Xunit;
 using Moq;
-using JOIEnergy.Domain;
+using System;
 using System.Collections.Generic;
+using Xunit;
 
 namespace JOIEnergy.Tests
 {
