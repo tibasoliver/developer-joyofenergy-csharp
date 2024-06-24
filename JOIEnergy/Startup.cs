@@ -69,7 +69,12 @@ namespace JOIEnergy
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints => 
+            { 
+                endpoints.MapControllers(); 
+            });
         }
 
         private Dictionary<string, List<ElectricityReading>> GenerateMeterElectricityReadings() {
