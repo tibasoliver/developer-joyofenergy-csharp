@@ -1,4 +1,5 @@
 ﻿using JOIEnergy.Domain;
+using JOIEnergy.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

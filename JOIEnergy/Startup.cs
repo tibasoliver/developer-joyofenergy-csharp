@@ -1,5 +1,6 @@
 ﻿using JOIEnergy.Domain;
 using JOIEnergy.Generator;
+using JOIEnergy.Interfaces;
 using JOIEnergy.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

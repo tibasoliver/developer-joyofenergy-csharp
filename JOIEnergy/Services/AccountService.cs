@@ -1,4 +1,5 @@
 ﻿using JOIEnergy.Enums;
+using JOIEnergy.Interfaces;
 using System;
 using System.Collections.Generic;
 

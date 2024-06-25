@@ -1,7 +1,7 @@
 ﻿using JOIEnergy.Domain;
 using System.Collections.Generic;
 
-namespace JOIEnergy.Services
+namespace JOIEnergy.Interfaces
 {
     public interface IMeterReadingService
     {
