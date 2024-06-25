@@ -20,7 +20,7 @@ namespace JOIEnergy.Controllers
         {
             if (!IsMeterReadingsValid(meterReadings))
             {
-                return new BadRequestObjectResult("Internal Server Error");
+                return new BadRequestObjectResult("Missing data: 'SmartMeterId' and/or 'ElectricityReadings' are required.");
             }
             meterReadingService.StoreReadings(meterReadings.SmartMeterId, meterReadings.ElectricityReadings);
             return new OkObjectResult("{}");
