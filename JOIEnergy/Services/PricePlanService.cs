@@ -6,18 +6,12 @@ using System.Linq;
 
 namespace JOIEnergy.Services
 {
-    public class PricePlanService : IPricePlanService
+    public class PricePlanService(List<PricePlan> pricePlan, IMeterReadingService meterReadingService) : IPricePlanService
     {
         public interface Debug { void Log(string s); };
 
-        private readonly List<PricePlan> _pricePlans;
-        private IMeterReadingService _meterReadingService;
-
-        public PricePlanService(List<PricePlan> pricePlan, IMeterReadingService meterReadingService)
-        {
-            _pricePlans = pricePlan;
-            _meterReadingService = meterReadingService;
-        }
+        private readonly List<PricePlan> _pricePlans = pricePlan;
+        private IMeterReadingService _meterReadingService = meterReadingService;
 
         private decimal calculateAverageReading(List<ElectricityReading> electricityReadings)
         {

@@ -5,14 +5,9 @@ using System.Collections.Generic;
 
 namespace JOIEnergy.Services
 {
-    public class AccountService : IAccountService
+    public class AccountService(Dictionary<string, string> smartMeterToPricePlanAccounts) : IAccountService
     {
-        private Dictionary<string, string> _smartMeterToPricePlanAccounts;
-
-        public AccountService(Dictionary<string, string> smartMeterToPricePlanAccounts)
-        {
-            _smartMeterToPricePlanAccounts = smartMeterToPricePlanAccounts;
-        }
+        private Dictionary<string, string> _smartMeterToPricePlanAccounts { get; set; } = smartMeterToPricePlanAccounts;
 
         public string GetPricePlanIdForSmartMeterId(string smartMeterId)
         {

@@ -10,24 +10,16 @@ using System.Linq;
 namespace JOIEnergy.Controllers
 {
     [Route("price-plans")]
-    public class PricePlanComparatorController : Controller
+    public class PricePlanComparatorController(IPricePlanService pricePlanService, IAccountService accountService) : Controller
     {
         public const string PRICE_PLAN_ID_KEY = "pricePlanId";
         public const string PRICE_PLAN_COMPARISONS_KEY = "pricePlanComparisons";
-        private readonly IPricePlanService _pricePlanService;
-        private readonly IAccountService _accountService;
-
-        public PricePlanComparatorController(IPricePlanService pricePlanService, IAccountService accountService)
-        {
-            this._pricePlanService = pricePlanService;
-            this._accountService = accountService;
-        }
 
         [HttpGet("compare-all/{smartMeterId}")]
         public ObjectResult CalculatedCostForEachPricePlan(string smartMeterId)
         {
-            string pricePlanId = _accountService.GetPricePlanIdForSmartMeterId(smartMeterId);
-            Dictionary<string, decimal> costPerPricePlan = _pricePlanService.GetConsumptionCostOfElectricityReadingsForEachPricePlan(smartMeterId);
+            string pricePlanId = accountService.GetPricePlanIdForSmartMeterId(smartMeterId);
+            Dictionary<string, decimal> costPerPricePlan = pricePlanService.GetConsumptionCostOfElectricityReadingsForEachPricePlan(smartMeterId);
             if (!costPerPricePlan.Any())
             {
                 return new NotFoundObjectResult(string.Format("Smart Meter ID ({0}) not found", smartMeterId));
@@ -42,7 +34,7 @@ namespace JOIEnergy.Controllers
         [HttpGet("recommend/{smartMeterId}")]
         public ObjectResult RecommendCheapestPricePlans(string smartMeterId, int? limit = null)
         {
-            var consumptionForPricePlans = _pricePlanService.GetConsumptionCostOfElectricityReadingsForEachPricePlan(smartMeterId);
+            var consumptionForPricePlans = pricePlanService.GetConsumptionCostOfElectricityReadingsForEachPricePlan(smartMeterId);
 
             if (!consumptionForPricePlans.Any())
             {
